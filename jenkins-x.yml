@@ -1,1 +1,7 @@
 buildPack: typescript
+pipelineConfig:
+  agent:
+    image: gcr.io/jenkinsxio/builder-nodejs12x:latest
+  env:
+    - value: gcr.io
+      name: DOCKER_REGISTRY
