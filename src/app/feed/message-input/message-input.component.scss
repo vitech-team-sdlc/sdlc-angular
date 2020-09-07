@@ -1,0 +1,53 @@
+@import 'src/styles';
+
+.message-input-component {
+
+  margin-bottom: 60px;
+
+  .message-textarea {
+    width: 540px;
+    height: 95px;
+    box-sizing: border-box;
+
+    border: 1px solid #CCCCCC;
+    border-radius: 13px;
+    resize: none;
+    outline: none;
+    padding: 10px 20px;
+
+    font-size: 24px;
+    font-family: $font-family;
+    margin: 100px 0 24px 0;
+  }
+
+  .message-textarea::placeholder {
+    color: #CCCCCC;
+  }
+
+  .message-button-bar {
+
+    display: flex;
+    justify-content: flex-end;
+
+    .message-button {
+      width: 126px;
+      height: 64px;
+      background: #26343D;
+      border-radius: 13px;
+
+      font-family: $font-family;
+      font-size: 24px;
+
+      color: #FFFFFF;
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .message-button:active {
+      background: #3c525c;
+    }
+
+  }
+
+}

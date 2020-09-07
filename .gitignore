@@ -1,0 +1,12 @@
+
+.project
+.classpath
+.idea
+.cache
+.DS_Store
+.scannerwork
+*.im?
+target
+work
+node_modules
+coverage

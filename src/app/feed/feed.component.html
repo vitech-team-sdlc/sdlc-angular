@@ -1,0 +1,12 @@
+<div class="feed-component">
+  <div class="logo">
+    <img src="assets/images/logo.svg">
+  </div>
+  <div class="feed">
+    <app-message-input (messageSent)="postMessage($event)"></app-message-input>
+    <app-message></app-message>
+  </div>
+  <div class="user-logo">
+    <app-user-logo [user]="authenticateUser"></app-user-logo>
+  </div>
+</div>

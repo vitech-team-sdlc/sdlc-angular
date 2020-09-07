@@ -1,0 +1,15 @@
+.feed-component {
+  display: flex;
+  justify-content: space-between;
+
+  .logo, .user-logo {
+    margin: 20px;
+  }
+
+  .feed {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+  }
+
+}

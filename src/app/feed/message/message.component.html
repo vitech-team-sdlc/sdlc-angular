@@ -1,0 +1,7 @@
+<div class="message-component">
+  <div *ngFor="let message of messages" class="message-wrapper">
+    <app-user-logo [user]="message.creator"
+                   title="{{message.creator.firstName}} {{message.creator.lastName}}"></app-user-logo>
+    <div class="message" innerHTML="{{message.message | hashtag}}"></div>
+  </div>
+</div>

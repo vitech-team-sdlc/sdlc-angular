@@ -1,0 +1,28 @@
+.message-component {
+
+  height: calc(100vh - 390px);
+  margin-bottom: 20px;
+  overflow-y: auto;
+
+  .message-wrapper {
+
+    display: flex;
+
+    app-user-logo {
+      margin-right: 20px;
+    }
+
+    .message {
+      width: 540px;
+      height: 115px;
+      box-sizing: border-box;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+
+      border-radius: 13px;
+      background: rgba(196, 196, 196, 0.15);
+    }
+
+  }
+
+}
