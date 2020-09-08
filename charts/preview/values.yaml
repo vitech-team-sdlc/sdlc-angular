@@ -24,7 +24,8 @@ preview:
 mood-feed-backend:
   service:
     name: mood-feed-backend
-    type: NodePort
+  env:
+    SPRING_PROFILES_ACTIVE: preview
 
 mysql:
   mysqlPassword: 123QWEasd
