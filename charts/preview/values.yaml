@@ -26,6 +26,7 @@ mood-feed-backend:
     name: mood-feed-backend
   env:
     SPRING_PROFILES_ACTIVE: preview
+    JAVA_OPTIONS: -Dlogging.level.org.springframework.web=TRACE
 
 mysql:
   mysqlPassword: 123QWEasd
