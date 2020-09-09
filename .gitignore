@@ -10,3 +10,4 @@ target
 work
 node_modules
 coverage
+dist
