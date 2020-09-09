@@ -18,3 +18,4 @@ pipelineConfig:
             name: npm-install
           - sh: npm run build-prod
             name: npm-build
+
