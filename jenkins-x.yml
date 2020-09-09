@@ -1,20 +1,7 @@
 buildPack: typescript
 pipelineConfig:
   agent:
-    image: gcr.io/jenkinsxio/builder-nodejs12x:latest
-  env:
-    - value: gcr.io
-      name: DOCKER_REGISTRY
-    - name: GIT_AUTHOR_EMAIL
-      value: jenkins-x@googlegroups.com
-    - name: GIT_AUTHOR_NAME
-      value: jenkins-x-bot
-    - name: GIT_COMMITTER_EMAIL
-      value: jenkins-x@googlegroups.com
-    - name: GIT_COMMITTER_NAME
-      value: jenkins-x-bot
-    - name: XDG_CONFIG_HOME
-      value: /home/jenkins
+    image: nodejs12x
   pipelines:
     overrides:
       - pipeline: pullRequest
@@ -31,4 +18,3 @@ pipelineConfig:
             name: npm-install
           - sh: npm run build-prod
             name: npm-build
-
