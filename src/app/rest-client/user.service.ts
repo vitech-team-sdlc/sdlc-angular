@@ -17,7 +17,7 @@ export class UserService {
   auth(): Observable<any> {
     return this.http.get(environment.baseUrl + '/users/auth').pipe(map((res: User) => {
       this.user.next(res);
-    }));
+    }))
   }
 
 }

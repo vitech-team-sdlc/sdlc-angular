@@ -25,7 +25,7 @@ describe('UserService', () => {
   it('#auth', () => {
     service.auth().subscribe();
 
-    const req = httpMock.expectOne(environment.baseUrl + '/users/authe');
+    const req = httpMock.expectOne(environment.baseUrl + '/users/auth');
     expect(req.request.method).toEqual('GET');
     req.flush(new User());
     httpMock.verify();
