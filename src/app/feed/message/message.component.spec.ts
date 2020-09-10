@@ -2,9 +2,9 @@ import {async, ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/t
 
 import {MessageComponent} from './message.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {of} from "rxjs";
-import {Message} from "../../domain/Message";
-import {MessageService} from "../../rest-client/message.service";
+import {of} from 'rxjs';
+import {Message} from '../../domain/Message';
+import {MessageService} from '../../rest-client/message.service';
 
 describe('MessageComponent', () => {
   let component: MessageComponent;
