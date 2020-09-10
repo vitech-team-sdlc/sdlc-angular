@@ -2,10 +2,9 @@ import {TestBed} from '@angular/core/testing';
 
 import {MessageService} from './message.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import {environment} from "../../environments/environment";
-import {User} from "../domain/User";
-import {Message} from "../domain/Message";
-import {HttpRequest} from "@angular/common/http";
+import {environment} from '../../environments/environment';
+import {Message} from '../domain/Message';
+import {HttpRequest} from '@angular/common/http';
 
 describe('MessageService', () => {
   let service: MessageService;
