@@ -20,3 +20,19 @@ preview:
     repository:
     tag:
     pullPolicy: IfNotPresent
+
+mood-feed-backend:
+  service:
+    name: mood-feed-backend
+  env:
+    SPRING_PROFILES_ACTIVE: preview
+    _JAVA_OPTIONS: -Dlogging.level.org.springframework.web=TRACE
+
+mysql:
+  mysqlPassword: 123QWEasd
+  mysqlDatabase: moodfeed
+  mysqlUser: moodfeed
+  mysqlRootPassword: 123QWEasd
+  initializationFiles:
+    mood_feed_db.sql: |-
+      CREATE DATABASE IF NOT EXISTS mood_feed DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
