@@ -5,14 +5,19 @@ pipelineConfig:
   pipelines:
     overrides:
       - pipeline: pullRequest
-        name: npm-test
-        type: after
+        name: npm-install
         steps:
+          - sh: npm install
+            name: npm-install
           - sh: npm run build-prod
             name: npm-build
+          - sh: npm run lint
+            name: npm-lint
       - pipeline: release
-        name: npm-test
-        type: after
+        name: npm-install
         steps:
+          - sh: npm install
+            name: npm-install
           - sh: npm run build-prod
             name: npm-build
+
