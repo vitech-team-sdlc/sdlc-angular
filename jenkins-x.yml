@@ -5,41 +5,14 @@ pipelineConfig:
   pipelines:
     overrides:
       - pipeline: pullRequest
-        name: npm-install
+        name: build-npm-test
         type: after
         steps:
           - sh: npm run build-prod
             name: npm-build
       - pipeline: release
-        name: npm-install
+        name: build-npm-test
         type: after
         steps:
           - sh: npm run build-prod
             name: npm-build
-    pullRequest:
-      preBuild:
-        steps:
-          - name: conventionalcommits-check
-            image: aevea/commitsar:latest
-            command: $(commitsar > $CONV_COMMIT_FILE) || { echo 'commit check failed' >> $CONV_COMMIT_ERR_FILE; exit 0; }
-          - name: conventionalcommits-print
-            command: cat $CONV_COMMIT_FILE
-          - name: conventionalcommits-comment
-            command: |
-              if [ -f "$CONV_COMMIT_ERR_FILE" ]; then
-                  jx step pr comment -c "$(echo -e "[Conventional Commits](https://www.conventionalcommits.org): **Check Failed** :cursing_face: \n HASH | ERROR | MSG \n --|--|-- \n $(cat  $CONV_COMMIT_FILE | grep "|" | awk  -F"|" '{printf "%s | %s | %s", $2, $3, $4;} {print ""}' | grep -v -e '^[[:space:]]*$' | tail -n +2 | grep '[[:alnum:]]')")"
-                  exit 1;
-              else
-                 echo 'COMMIT MESSAGE CHECK PASSED!'
-              fi
-    release:
-      setVersion:
-        steps:
-          - image: nodejs
-            steps:
-              - comment: so we can retrieve the version in later steps
-                name: next-version
-                sh: jx step next-version --filename package.json
-              - name: tag-version
-                sh: jx step tag --version \$(cat VERSION)
-
