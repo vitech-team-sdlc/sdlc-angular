@@ -3,6 +3,19 @@ pipelineConfig:
   agent:
     image: nodejs12x
   pipelines:
+    overrides:
+      - pipeline: pullRequest
+        name: npm-install
+        type: after
+        steps:
+          - sh: npm run build-prod
+            name: npm-build
+      - pipeline: release
+        name: npm-install
+        type: after
+        steps:
+          - sh: npm run build-prod
+            name: npm-build
     pullRequest:
       preBuild:
         steps:
