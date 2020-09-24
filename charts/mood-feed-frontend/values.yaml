@@ -4,7 +4,7 @@
 replicaCount: 1
 image:
   repository: gcr.io/sdlc-286111/mood-feed-frontend
-  tag: 1.0.2
+  tag: 1.0.3
   pullPolicy: IfNotPresent
 
 # define environment variables here as a map of key: value
