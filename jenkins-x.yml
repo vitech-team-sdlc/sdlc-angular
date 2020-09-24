@@ -2,6 +2,23 @@ buildPack: typescript
 pipelineConfig:
   agent:
     image: nodejs12x
+  env:
+    - value: gcr.io
+      name: DOCKER_REGISTRY
+    - name: GIT_AUTHOR_EMAIL
+      value: jenkins-x@googlegroups.com
+    - name: GIT_AUTHOR_NAME
+      value: jenkins-x-bot
+    - name: GIT_COMMITTER_EMAIL
+      value: jenkins-x@googlegroups.com
+    - name: GIT_COMMITTER_NAME
+      value: jenkins-x-bot
+    - name: XDG_CONFIG_HOME
+      value: /home/jenkins
+    - name: CONV_COMMIT_ERR_FILE
+      value: check.failed
+    - name: CONV_COMMIT_FILE
+      value: commit.check
   pipelines:
     pullRequest:
       preBuild:
