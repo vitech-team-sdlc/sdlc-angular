@@ -1,0 +1,11 @@
+apiVersion: kpt.dev/v1alpha1
+kind: Kptfile
+metadata:
+  name: preview
+upstream:
+  type: git
+  git:
+    commit: a18d30cd7464a790f3ff69ff4cf0f9072def2db8
+    repo: https://github.com/jenkins-x/jx3-gitops-template
+    directory: /charts/preview
+    ref: master
