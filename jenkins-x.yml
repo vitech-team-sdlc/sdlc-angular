@@ -59,9 +59,9 @@ pipelineConfig:
                 command: yq r pr.yaml Source > target.branch && rm pr.yaml
               - name: swith-branch
                 command: git status && git fetch && git checkout $(cat target.branch)
-              - name: npm-install
+              - name: pre-sonar-npm-install
                 command: npm install
-              - name: npm-test
+              - name: pre-sonar-npm-test
                 command: npm run test
               - name: sonar
                 image: sonarsource/sonar-scanner-cli:4.4
