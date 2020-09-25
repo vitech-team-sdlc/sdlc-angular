@@ -26,4 +26,12 @@ export class MessageService {
     }, {headers: {'Content-Type': 'application/json'}});
   }
 
+  test(): void {
+    console.log('test');
+    console.log('test');
+    console.log('test');
+    console.log('test');
+    console.log('test');
+  }
+
 }
