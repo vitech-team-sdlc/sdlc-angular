@@ -44,7 +44,7 @@ pipelineConfig:
             args:
               - "-Dsonar.host.url=${SONAR_HOST}"
               - "-Dsonar.login=${SONAR_TOKEN}"
-              - "-Dsonar.pullrequest.branch=$(cat target.branch)"
+              - "-Dsonar.pullrequest.branch=sonar-covarage"
               - "-Dsonar.pullrequest.base=${PULL_BASE_REF}"
               - "-Dsonar.pullrequest.key=${PULL_NUMBER}"
               - "-Dsonar.pullrequest.github.repository=${REPO_OWNER}/${REPO_NAME}"
