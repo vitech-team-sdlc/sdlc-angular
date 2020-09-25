@@ -64,7 +64,7 @@ pipelineConfig:
               - name: pre-sonar-npm-test
                 command: npm run test
               - name: folder-check
-                command: ls -la && ls -la coverage/mood-feed-frontend
+                command: ls -la && ls -la coverage/mood-feed-frontend && cat coverage/mood-feed-frontend/lcov.info
               - name: sonar
                 image: sonarsource/sonar-scanner-cli:4.4
                 command: cat sonar-project.properties && sonar-scanner
