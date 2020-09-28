@@ -108,7 +108,7 @@ pipelineConfig:
             name: npm-build
           - sh: npm run lint
             name: npm-lint
-          - sh: npm install -g snyk && snyk test
+          - sh: npm snyk
             name: npm-snyk
             env:
               - name: SNYK_TOKEN
