@@ -19,6 +19,8 @@ pipelineConfig:
       value: check.failed
     - name: CONV_COMMIT_FILE
       value: commit.check
+    - name: CONV_COMMIT_FILE
+      value: b8017381-3403-4063-9407-0700495fbbdf
   pipelines:
     pullRequest:
       preBuild:
