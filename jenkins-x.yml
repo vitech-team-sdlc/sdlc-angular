@@ -110,7 +110,7 @@ pipelineConfig:
             name: npm-build
           - sh: npm run lint
             name: npm-lint
-          - sh: snyk auth && npm run snyk
+          - sh: npm run snyk
             name: npm-snyk
       - pipeline: release
         name: npm-install
