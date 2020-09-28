@@ -8,6 +8,7 @@
     "build-prod": "ng build --prod",
     "test": "ng test --code-coverage=true --browsers=ChromeHeadlessNoSandbox --watch=false",
     "lint": "ng lint",
+    "snyk": "snyk test",
     "e2e": "ng e2e"
   },
   "private": true,
@@ -40,6 +41,7 @@
     "karma-jasmine": "~3.3.0",
     "karma-jasmine-html-reporter": "^1.5.0",
     "protractor": "~7.0.0",
+    "snyk": "^1.402.0",
     "sonarqube-scanner": "^2.7.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
