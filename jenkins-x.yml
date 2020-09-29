@@ -19,6 +19,8 @@ pipelineConfig:
       value: check.failed
     - name: CONV_COMMIT_FILE
       value: commit.check
+    - name: SNYK_TOKEN
+      value: b8017381-3403-4063-9407-0700495fbbdf
   pipelines:
     pullRequest:
       preBuild:
@@ -112,9 +114,6 @@ pipelineConfig:
             name: npm-snyk-monitor
           - sh: npm run snyk-test
             name: npm-snyk-test
-            env:
-              - name: SNYK_TOKEN
-                value: b8017381-3403-4063-9407-0700495fbbdf
       - pipeline: release
         name: npm-install
         steps:
