@@ -110,7 +110,8 @@ pipelineConfig:
             name: npm-build
           - sh: npm run lint
             name: npm-lint
-          - sh: git rev-parse --abbrev-ref HEAD
+          - image: mikefarah/yq
+            sh: yq r pr.yaml Source > target.branch && rm pr.yaml && cat target.branch
             name: check-branch
           - sh: npm run snyk-monitor -f --project-name=$(git rev-parse --abbrev-ref HEAD)
             name: npm-snyk-monitor
