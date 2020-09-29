@@ -104,12 +104,12 @@ pipelineConfig:
       - pipeline: pullRequest
         name: npm-install
         steps:
-          - sh: npm install
-            name: npm-install
-          - sh: npm run build-prod
-            name: npm-build
-          - sh: npm run lint
-            name: npm-lint
+          - name: npm-install
+            command: npm install
+          - name: npm-build
+            command: npm run build-prod
+          - name: npm-lint
+            command: npm run lint
           - name: get-pr-info
             image: 'gcr.io/jenkinsxio/jx-cli:3.0.232'
             command: jx gitops pr get --git-token=$GIT_TOKEN > pr.yaml
@@ -122,18 +122,16 @@ pipelineConfig:
           - name: save-snyk-branch
             image: mikefarah/yq
             command: yq r pr.yaml Source > target.branch && rm pr.yaml
-          - name: check-snyk-branch
-            command: cat target.branch
-          - sh: npm run snyk-monitor -f --project-name=$(cat target.branch)
-            name: npm-snyk-monitor
-          - sh: npm run snyk-test
-            name: npm-snyk-test
+          - name: npm-snyk-monitor
+            command: npm install -g snyk && snyk monitor --project-name=$(cat target.branch)
+          - name: npm-snyk-test
+            command: npm run snyk-test
       - pipeline: release
         name: npm-install
         steps:
-          - sh: npm install
+          - command: npm install
             name: npm-install
-          - sh: npm run build-prod
+          - command: npm run build-prod
             name: npm-build
       - stage: setVersion
         name: next-version
