@@ -111,14 +111,14 @@ pipelineConfig:
           - sh: npm run lint
             name: npm-lint
           - name: check-branch
-          image: 'gcr.io/jenkinsxio/jx-cli:3.0.232'
-          command: jx gitops pr get --git-token=$GIT_TOKEN
-          env:
-            - name: GIT_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: jx-pipeline-git-github-github
-                  key: password
+            image: 'gcr.io/jenkinsxio/jx-cli:3.0.232'
+            command: jx gitops pr get --git-token=$GIT_TOKEN
+            env:
+              - name: GIT_TOKEN
+                valueFrom:
+                  secretKeyRef:
+                    name: jx-pipeline-git-github-github
+                    key: password
           - sh: npm run snyk-monitor -f --project-name=$(git rev-parse --abbrev-ref HEAD)
             name: npm-snyk-monitor
           - sh: npm run snyk-test
