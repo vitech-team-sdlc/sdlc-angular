@@ -122,6 +122,8 @@ pipelineConfig:
           - name: save-snyk-branch
             image: mikefarah/yq
             command: yq r pr.yaml Source > target.branch && rm pr.yaml
+          - name: check-snyk-branch
+            command: cat target.branch
           - sh: npm run snyk-monitor -f --project-name=$(cat target.branch)
             name: npm-snyk-monitor
           - sh: npm run snyk-test
