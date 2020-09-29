@@ -108,8 +108,10 @@ pipelineConfig:
             name: npm-build
           - sh: npm run lint
             name: npm-lint
-          - sh: npm run snyk
-            name: npm-snyk
+          - sh: npm run snyk-test-monitor --project-name=$(git rev-parse --abbrev-ref HEAD)
+            name: npm-snyk-monitor
+          - sh: npm run snyk-test
+            name: npm-snyk-test
             env:
               - name: SNYK_TOKEN
                 value: b8017381-3403-4063-9407-0700495fbbdf

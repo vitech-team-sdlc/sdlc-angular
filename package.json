@@ -8,7 +8,8 @@
     "build-prod": "ng build --prod",
     "test": "ng test --code-coverage=true --browsers=ChromeHeadlessNoSandbox --watch=false",
     "lint": "ng lint",
-    "snyk": "snyk test && snyk monitor",
+    "snyk-test": "snyk test",
+    "snyk-monitor": "snyk monitor",
     "e2e": "ng e2e"
   },
   "private": true,
