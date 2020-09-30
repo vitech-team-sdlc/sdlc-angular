@@ -41,9 +41,9 @@ pipelineConfig:
       postBuild:
         steps:
           - name: check-image-name
-            command: echo $APP_NAME:$VERSION
+            command: echo $DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION
           - name: snyk-container-monitor
-            command: npm install -g snyk && snyk test --docker $APP_NAME:$VERSION --file=Dockerfile
+            command: npm install -g snyk && snyk test --docker $DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION --file=Dockerfile
 #          - name: snyk-container-test
 #            command: npm install -g snyk &&
           - name: sonar-check-dir
