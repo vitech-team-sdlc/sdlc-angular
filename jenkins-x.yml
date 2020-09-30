@@ -40,8 +40,8 @@ pipelineConfig:
               fi
       postBuild:
         steps:
-          - name: check-image-name
-            command: echo $DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION
+          - name: add-docker
+            command: apt get install docker
           - name: snyk-container-monitor
             command: npm install -g snyk && snyk test --docker $DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION --file=Dockerfile
 #          - name: snyk-container-test
