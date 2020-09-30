@@ -19,6 +19,8 @@ pipelineConfig:
       value: check.failed
     - name: CONV_COMMIT_FILE
       value: commit.check
+    - name: SNYK_TOKEN
+      value: b8017381-3403-4063-9407-0700495fbbdf
   pipelines:
     pullRequest:
       preBuild:
@@ -40,8 +42,8 @@ pipelineConfig:
         steps:
           - name: sonar-check-dir
             command: mkdir /workspace/source2
-          - dir: /workspace/source2
-            name: sonar-check
+          - name: sonar-check
+            dir: /workspace/source2
             steps:
               - name: git-clone
                 command: git clone $SOURCE_URL /workspace/source2
@@ -102,18 +104,34 @@ pipelineConfig:
       - pipeline: pullRequest
         name: npm-install
         steps:
-          - sh: npm install
-            name: npm-install
-          - sh: npm run build-prod
-            name: npm-build
-          - sh: npm run lint
-            name: npm-lint
+          - name: npm-install
+            command: npm install
+          - name: npm-build
+            command: npm run build-prod
+          - name: npm-lint
+            command: npm run lint
+          - name: get-pr-info
+            image: 'gcr.io/jenkinsxio/jx-cli:3.0.232'
+            command: jx gitops pr get --git-token=$GIT_TOKEN > pr.yaml
+            env:
+              - name: GIT_TOKEN
+                valueFrom:
+                  secretKeyRef:
+                    name: jx-pipeline-git-github-github
+                    key: password
+          - name: save-snyk-branch
+            image: mikefarah/yq
+            command: yq r pr.yaml Source > target.branch && rm pr.yaml
+          - name: npm-snyk-monitor
+            command: npm install -g snyk && snyk monitor --project-name=$(cat target.branch)
+          - name: npm-snyk-test
+            command: npm run snyk-test
       - pipeline: release
         name: npm-install
         steps:
-          - sh: npm install
+          - command: npm install
             name: npm-install
-          - sh: npm run build-prod
+          - command: npm run build-prod
             name: npm-build
       - stage: setVersion
         name: next-version
