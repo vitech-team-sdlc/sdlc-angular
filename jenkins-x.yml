@@ -123,7 +123,7 @@ pipelineConfig:
             image: mikefarah/yq
             command: yq r pr.yaml Source > target.branch && rm pr.yaml
           - name: npm-snyk-monitor
-            command: npm install -g snyk && jx step pr comment -c $(snyk monitor --project-name=$(cat target.branch))
+            command: npm install -g snyk && snyk monitor --project-name=$(cat target.branch)
           - name: npm-snyk-test
             command: npm run snyk-test
       - pipeline: release
