@@ -40,9 +40,10 @@ pipelineConfig:
               fi
       postBuild:
         steps:
-          - name: add-docker
-            command: apt get install docker
           - name: snyk-container-monitor
+            env:
+              - name: DOCKER_HOST
+                value: test.com
             command: npm install -g snyk && snyk test --docker $DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION --file=Dockerfile
 #          - name: snyk-container-test
 #            command: npm install -g snyk &&
