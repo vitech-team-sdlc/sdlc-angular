@@ -48,12 +48,6 @@ pipelineConfig:
               - name: get-pr-info
                 image: 'gcr.io/jenkinsxio/jx-cli:3.0.232'
                 command: jx gitops pr get --git-token=$GIT_TOKEN > pr.yaml
-                env:
-                  - name: GIT_TOKEN
-                    valueFrom:
-                      secretKeyRef:
-                        name: jx-pipeline-git-github-github
-                        key: password
               - name: save-source-branch
                 image: mikefarah/yq
                 command: yq r pr.yaml Source > target.branch && rm pr.yaml
@@ -77,27 +71,6 @@ pipelineConfig:
                   - "-Dsonar.organization=${SONAR_ORG}"
                   - "-Dsonar.projectName=${REPO_NAME}"
                   - "-Dsonar.scm.provider=${SONAR_SCM}"
-                env:
-                  - name: SONAR_TOKEN
-                    valueFrom:
-                      secretKeyRef:
-                        name: sonar
-                        key: sonar.login
-                  - name: SONAR_ORG
-                    valueFrom:
-                      secretKeyRef:
-                        name: sonar
-                        key: sonar.organization
-                  - name: SONAR_HOST
-                    valueFrom:
-                      secretKeyRef:
-                        name: sonar
-                        key: sonar.host.url
-                  - name: SONAR_SCM
-                    valueFrom:
-                      secretKeyRef:
-                        name: sonar
-                        key: sonar.scm.provider
     overrides:
       - pipeline: pullRequest
         name: npm-install
@@ -133,24 +106,3 @@ pipelineConfig:
               - "-Dsonar.organization=${SONAR_ORG}"
               - "-Dsonar.projectName=${REPO_NAME}"
               - "-Dsonar.scm.provider=${SONAR_SCM}"
-            env:
-              - name: SONAR_TOKEN
-                valueFrom:
-                  secretKeyRef:
-                    name: sonar
-                    key: sonar.login
-              - name: SONAR_ORG
-                valueFrom:
-                  secretKeyRef:
-                    name: sonar
-                    key: sonar.organization
-              - name: SONAR_HOST
-                valueFrom:
-                  secretKeyRef:
-                    name: sonar
-                    key: sonar.host.url
-              - name: SONAR_SCM
-                valueFrom:
-                  secretKeyRef:
-                    name: sonar
-                    key: sonar.scm.provider
