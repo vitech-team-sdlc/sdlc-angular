@@ -59,7 +59,8 @@ resources:
   requests:
     cpu: 200m
     memory: 128Mi
-probePath: /
+probePathLiveness: /
+probePathReadiness: /
 livenessProbe:
   initialDelaySeconds: 60
   periodSeconds: 10
