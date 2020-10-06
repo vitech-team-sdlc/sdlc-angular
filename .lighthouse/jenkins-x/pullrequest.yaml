@@ -253,6 +253,14 @@ spec:
           name: build-npm-test
           resources: {}
         - args:
+          - npm build-prod
+          command:
+          - /bin/sh
+          - -c
+          image: gcr.io/jenkinsxio/builder-nodejs12x:2.1.150-769
+          name: build-npm-build-prod
+          resources: {}
+        - args:
           - source .jx/variables.sh && /kaniko/executor $KANIKO_FLAGS --cache=true --cache-dir=/workspace --context=/workspace/source --dockerfile=/workspace/source/Dockerfile --destination=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION --cache-repo=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/cache
           command:
           - /busybox/sh
