@@ -253,7 +253,7 @@ spec:
           name: build-npm-test
           resources: {}
         - args:
-          - CI=true DISPLAY=:99 npm build-prod
+          - npm run build-prod
           command:
           - /bin/sh
           - -c
