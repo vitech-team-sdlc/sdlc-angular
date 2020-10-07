@@ -249,8 +249,8 @@ spec:
         - args:
           - CI=true DISPLAY=:99 npm test
           command:
-            - /bin/sh
-            - -c
+          - /bin/sh
+          - -c
           image: gcr.io/jenkinsxio/builder-nodejs12x:latest
           name: build-npm-tests
           resources: {}
