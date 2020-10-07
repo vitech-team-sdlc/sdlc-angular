@@ -270,6 +270,9 @@ spec:
           image: gcr.io/kaniko-project/executor:debug-v0.24.0
           name: build-container-build
           resources: {}
+        - name: test-step
+          script: |
+            echo "TEST"
         - args:
           - source /workspace/source/.jx/variables.sh && jx preview create
           command:
