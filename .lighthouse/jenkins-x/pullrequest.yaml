@@ -260,6 +260,7 @@ spec:
           - /bin/sh
           - -c
           name: build-npm-tests
+          resources: {}
         - args:
           - npm run build-prod
           command:
