@@ -255,11 +255,20 @@ spec:
           name: build-npm-test
           resources: {}
         - args:
-          - echo "TEST"
+          - npm run snyk-monitor
           command:
-          - /bin/sh
-          - -c
-          name: build-npm-tests
+            - /bin/sh
+            - -c
+          image: gcr.io/jenkinsxio/builder-nodejs12x:latest
+          name: npm-snyk-monitor
+          resources: {}
+        - args:
+            - npm run snyk-test
+          command:
+            - /bin/sh
+            - -c
+          image: gcr.io/jenkinsxio/builder-nodejs12x:latest
+          name: npm-snyk-test
           resources: {}
         - args:
           - npm run build-prod
@@ -277,6 +286,10 @@ spec:
           image: gcr.io/kaniko-project/executor:debug-v0.24.0
           name: build-container-build
           resources: {}
+        - name: check-variables
+          image: gcr.io/jenkinsxio/jx-cli:latest
+          script: |
+            cat /workspace/source/.jx/variables.sh
         - args:
           - source /workspace/source/.jx/variables.sh && jx preview create
           command:
