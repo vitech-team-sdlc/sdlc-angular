@@ -255,22 +255,6 @@ spec:
           name: build-npm-tests
           resources: {}
         - args:
-          - npm run snyk-monitor
-          command:
-          - /bin/sh
-          - -c
-          image: gcr.io/jenkinsxio/builder-nodejs12x:latest
-          name: npm-snyk-monitor
-          resources: {}
-        - args:
-          - npm run snyk-test
-          command:
-          - /bin/sh
-          - -c
-          image: gcr.io/jenkinsxio/builder-nodejs12x:latest
-          name: npm-snyk-test
-          resources: {}
-        - args:
           - npm run build-prod
           command:
           - /bin/sh
