@@ -245,6 +245,22 @@ spec:
           name: build-npm-install
           resources: {}
         - args:
+          - npm install -g snyk && snyk monitor --project-name=test-new-pipeline
+          command:
+          - /bin/sh
+          - -c
+          image: gcr.io/jenkinsxio/builder-nodejs12x:2.1.150-769
+          name: npm-snyk-monitor
+          resources: {}
+        - args:
+          - npm run snyk-test
+          command:
+          - /bin/sh
+          - -c
+          image: gcr.io/jenkinsxio/builder-nodejs12x:2.1.150-769
+          name: npm-snyk-test
+          resources: {}
+        - args:
           - CI=true DISPLAY=:99 npm test
           command:
           - /bin/sh
