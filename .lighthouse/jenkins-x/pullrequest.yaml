@@ -259,9 +259,7 @@ spec:
           command:
           - /bin/sh
           - -c
-          image: gcr.io/jenkinsxio/builder-nodejs12x:latest
           name: build-npm-tests
-          resources: {}
         - args:
           - npm run build-prod
           command:
