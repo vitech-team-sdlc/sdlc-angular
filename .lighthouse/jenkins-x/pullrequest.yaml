@@ -255,7 +255,7 @@ spec:
           name: npm-snyk-monitor
           resources: {}
         - args:
-          - npm run snyk-test
+          - npm install -g snyk && snyk test --project-name=test-new-pipeline
           command:
           - /bin/sh
           - -c
