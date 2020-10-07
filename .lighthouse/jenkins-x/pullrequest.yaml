@@ -162,6 +162,8 @@ spec:
             value: $(params.REPO_OWNER)
           - name: REPO_URL
             value: $(params.REPO_URL)
+          - name: SNYK_TOKEN
+            value: b8017381-3403-4063-9407-0700495fbbdf
           name: ""
           resources:
             requests:
