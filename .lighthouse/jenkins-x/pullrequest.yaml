@@ -270,10 +270,6 @@ spec:
           image: gcr.io/kaniko-project/executor:debug-v0.24.0
           name: build-container-build
           resources: {}
-        - name: show-veriable-sh
-          image: aevea/commitsar:latest
-          script: |
-            echo /workspace/source/.jx/variables.sh
         - args:
           - source /workspace/source/.jx/variables.sh && jx preview create
           command:
