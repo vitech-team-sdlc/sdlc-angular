@@ -252,6 +252,14 @@ spec:
           - /bin/sh
           - -c
           image: gcr.io/jenkinsxio/builder-nodejs12x:latest
+          name: build-npm-test
+          resources: {}
+        - args:
+          - CI=true DISPLAY=:99 npm test
+          command:
+          - /bin/sh
+          - -c
+          image: gcr.io/jenkinsxio/builder-nodejs12x:latest
           name: build-npm-tests
           resources: {}
         - args:
@@ -270,9 +278,6 @@ spec:
           image: gcr.io/kaniko-project/executor:debug-v0.24.0
           name: build-container-build
           resources: {}
-        - name: test-step
-          script: |
-            echo "TEST"
         - args:
           - source /workspace/source/.jx/variables.sh && jx preview create
           command:
