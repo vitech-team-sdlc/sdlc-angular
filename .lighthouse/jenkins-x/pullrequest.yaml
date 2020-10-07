@@ -271,12 +271,6 @@ spec:
           name: build-container-build
           resources: {}
         - args:
-            - echo /workspace/source/.jx/variables.sh
-          command:
-            - /bin/sh
-            - -c
-          name: show-veriable-sh
-        - args:
           - source /workspace/source/.jx/variables.sh && jx preview create
           command:
           - /bin/bash
