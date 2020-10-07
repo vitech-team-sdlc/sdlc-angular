@@ -296,7 +296,7 @@ spec:
             - snyk
             - container
             - test
-            - $DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION
+            - $APP_NAME:$VERSION
           command:
             - /usr/local/bin/docker-entrypoint.sh
         - args:
