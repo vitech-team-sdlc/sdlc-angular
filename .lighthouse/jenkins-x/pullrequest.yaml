@@ -296,11 +296,8 @@ spec:
 
             - name: snyk-container-test
               image: "snyk/snyk:docker"
-              args:
-                - source /workspace/source/.jx/variables.sh && /usr/local/bin/docker-entrypoint.sh && snyk container test $DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION
-              command:
-                - /bin/bash
-                - -c
+              script: |
+                source /workspace/source/.jx/variables.sh && /usr/local/bin/docker-entrypoint.sh && snyk container test $DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION
 
             - args:
                 - source /workspace/source/.jx/variables.sh && jx preview create
