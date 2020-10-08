@@ -279,12 +279,17 @@ spec:
               name: build-npm-build-prod
 
             - args:
-                - source .jx/variables.sh && /kaniko/executor $KANIKO_FLAGS --cache=true --cache-dir=/workspace --context=/workspace/source --dockerfile=/workspace/source/Dockerfile --destination=$APP_NAME:$VERSION
+                - source .jx/variables.sh && /kaniko/executor $KANIKO_FLAGS --cache=true --cache-dir=/workspace --context=/workspace/source --dockerfile=/workspace/source/Dockerfile --destination=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION --cache-repo=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/cache
               command:
                 - /busybox/sh
                 - -c
               image: gcr.io/kaniko-project/executor:debug-v0.24.0
               name: build-container-build
+
+            - name: check
+              image: gcr.io/jenkinsxio/jx-cli:latest
+              script: |
+                cat /workspace/source/.jx/variables.sh
 
             - name: snyk-container-test
               image: "snyk/snyk:docker"
