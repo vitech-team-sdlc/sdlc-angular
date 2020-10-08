@@ -297,7 +297,7 @@ spec:
             - name: build-image
               image: "snyk/snyk:docker"
               script: |
-                source /workspace/source/.jx/variables.sh && docker build /workspace/source --tag=test:test
+                docker build /workspace/source --tag=test:test
 
             - name: snyk-container-test
               image: "snyk/snyk:docker"
