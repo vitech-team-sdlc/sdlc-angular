@@ -254,21 +254,21 @@ spec:
             #          image: gcr.io/jenkinsxio/builder-nodejs12x:latest
             #          name: build-npm-test
             #
-            - args:
-                - npm run snyk-monitor
-              command:
-                - /bin/sh
-                - -c
-              image: gcr.io/jenkinsxio/builder-nodejs12x:latest
-              name: npm-snyk-monitor
-
-            - args:
-                - npm run snyk-test
-              command:
-                - /bin/sh
-                - -c
-              image: gcr.io/jenkinsxio/builder-nodejs12x:latest
-              name: npm-snyk-test
+#            - args:
+#                - npm run snyk-monitor
+#              command:
+#                - /bin/sh
+#                - -c
+#              image: gcr.io/jenkinsxio/builder-nodejs12x:latest
+#              name: npm-snyk-monitor
+#
+#            - args:
+#                - npm run snyk-test
+#              command:
+#                - /bin/sh
+#                - -c
+#              image: gcr.io/jenkinsxio/builder-nodejs12x:latest
+#              name: npm-snyk-test
 
             - args:
                 - npm run build-prod
@@ -279,7 +279,7 @@ spec:
               name: build-npm-build-prod
 
             - args:
-                - source .jx/variables.sh && /kaniko/executor $KANIKO_FLAGS --cache=true --cache-dir=/workspace --context=/workspace/source --dockerfile=/workspace/source/Dockerfile --destination=$APP_NAME:$VERSION --cache-repo=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/cache
+                - source .jx/variables.sh && /kaniko/executor $KANIKO_FLAGS --cache=true --cache-dir=/workspace --context=/workspace/source --dockerfile=/workspace/source/Dockerfile --destination=$APP_NAME:$VERSION
               command:
                 - /busybox/sh
                 - -c
