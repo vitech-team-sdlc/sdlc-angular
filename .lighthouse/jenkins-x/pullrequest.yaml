@@ -294,6 +294,11 @@ spec:
               image: gcr.io/kaniko-project/executor:debug-v0.24.0
               name: build-container-build
 
+            - name: build-image
+              image: "snyk/snyk:docker"
+              script: |
+                /workspace/source/.jx/variables.sh && docker build /workspace/source --tag=test:test
+
             - name: snyk-container-test
               image: "snyk/snyk:docker"
               script: |
