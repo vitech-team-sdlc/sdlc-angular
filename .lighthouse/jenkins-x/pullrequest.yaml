@@ -287,7 +287,7 @@ spec:
               name: build-container-build
 
             - name: check
-              image: "snyk/snyk:docker"
+              image: snyk/snyk:docker
               script: |
                 docker run --rm --env SNYK_TOKEN -v /var/run/docker.sock:/var/run/docker.sock snyk/snyk:docker snyk test --docker nginx
 
