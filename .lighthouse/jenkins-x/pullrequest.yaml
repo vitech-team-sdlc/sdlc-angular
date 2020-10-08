@@ -238,6 +238,14 @@ spec:
               image: gcr.io/jenkinsxio/builder-nodejs12x:latest
               name: build-npmrc
 
+            - name: check-image
+              image: gcr.io/jenkinsxio/jx-cli:latest
+              command:
+                - /bin/bash
+                - -c
+              args:
+                - source /workspace/source/.jx/variables.sh && echo $DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION
+
             - args:
                 - npm install
               command:
@@ -285,14 +293,6 @@ spec:
                 - -c
               image: gcr.io/kaniko-project/executor:debug-v0.24.0
               name: build-container-build
-
-            - name: check-image
-              image: gcr.io/jenkinsxio/jx-cli:latest
-              command:
-                - /bin/bash
-                - -c
-              args:
-                - source /workspace/source/.jx/variables.sh && echo $DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION
 
             - name: snyk-container-test
               image: "snyk/snyk:docker"
