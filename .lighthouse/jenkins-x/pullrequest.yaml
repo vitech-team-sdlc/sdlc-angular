@@ -286,15 +286,10 @@ spec:
               image: gcr.io/kaniko-project/executor:debug-v0.24.0
               name: build-container-build
 
-            - name: check
-              image: "snyk/snyk:docker"
-              script: |
-                /usr/local/bin/docker-entrypoint.sh && docker build /workspace/source/
-
             - name: snyk-container-test
               image: "snyk/snyk:docker"
               script: |
-                source /workspace/source/.jx/variables.sh && /usr/local/bin/docker-entrypoint.sh && snyk container test $DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION
+                source /workspace/source/.jx/variables.sh && /usr/local/bin/docker-entrypoint.sh snyk container test $DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION
 
             - args:
                 - source /workspace/source/.jx/variables.sh && jx preview create
