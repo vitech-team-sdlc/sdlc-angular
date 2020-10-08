@@ -246,14 +246,14 @@ spec:
           image: gcr.io/jenkinsxio/builder-nodejs12x:latest
           name: build-npm-install
           resources: {}
-        - args:
-          - CI=true DISPLAY=:99 npm test
-          command:
-          - /bin/sh
-          - -c
-          image: gcr.io/jenkinsxio/builder-nodejs12x:latest
-          name: build-npm-test
-          resources: {}
+#        - args:
+#          - CI=true DISPLAY=:99 npm test
+#          command:
+#          - /bin/sh
+#          - -c
+#          image: gcr.io/jenkinsxio/builder-nodejs12x:latest
+#          name: build-npm-test
+#          resources: {}
         - args:
           - npm run snyk-monitor
           command:
@@ -291,7 +291,7 @@ spec:
           script: |
             cat /workspace/source/.jx/variables.sh
         - name: snyk-container-test
-          image: "snyk/snyk:linux"
+          image: "snyk/snyk:docker"
           args:
             - snyk
             - container
