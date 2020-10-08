@@ -292,11 +292,6 @@ spec:
             cat /workspace/source/.jx/variables.sh
         - name: snyk-container-test
           image: "snyk/snyk:linux"
-          args:
-            - snyk
-            - container
-            - test
-            - $APP_NAME:$VERSION
           command:
             - /usr/local/bin/docker-entrypoint.sh
         - args:
