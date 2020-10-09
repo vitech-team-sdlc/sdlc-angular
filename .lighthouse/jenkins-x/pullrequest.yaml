@@ -278,13 +278,10 @@ spec:
               image: gcr.io/jenkinsxio/builder-nodejs12x:latest
               name: build-npm-build-prod
 
-            - args:
-                - docker build /workspace/source/ && docker images
-              command:
-                - /bin/bash
-                - -c
+            - name: test
               image: docker
-              name: test
+              script: |
+                docker build /workspace/source/ && docker images
 
 #            - args:
 #                - echo $KANIKO_FLAGS && source .jx/variables.sh && /kaniko/executor $KANIKO_FLAGS --cache=true --cache-dir=/workspace --context=/workspace/source --dockerfile=/workspace/source/Dockerfile --destination=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION --cache-repo=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/cache
