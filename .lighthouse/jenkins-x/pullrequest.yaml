@@ -233,7 +233,7 @@ spec:
           command:
           - /bin/sh
           - -c
-          gcr.io/jenkinsxio/builder-nodejs12x:latest
+          image: gcr.io/jenkinsxio/builder-nodejs12x:latest
           name: build-npmrc
           resources: {}
         - args:
@@ -241,7 +241,7 @@ spec:
           command:
           - /bin/sh
           - -c
-          gcr.io/jenkinsxio/builder-nodejs12x:latest
+          image: gcr.io/jenkinsxio/builder-nodejs12x:latest
           name: build-npm-install
           resources: {}
         - args:
@@ -249,7 +249,7 @@ spec:
           command:
           - /bin/sh
           - -c
-          gcr.io/jenkinsxio/builder-nodejs12x:latest
+          image: gcr.io/jenkinsxio/builder-nodejs12x:latest
           name: build-npm-test
           resources: {}
         - args:
