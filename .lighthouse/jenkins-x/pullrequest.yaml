@@ -279,7 +279,7 @@ spec:
               name: build-npm-build-prod
 
             - args:
-                - source .jx/variables.sh && /kaniko/executor $KANIKO_FLAGS --cache=true --cache-dir=/workspace --context=/workspace/source --dockerfile=/workspace/source/Dockerfile --destination=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION --cache-repo=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/cache
+                - echo $KANIKO_FLAGS && source .jx/variables.sh && /kaniko/executor $KANIKO_FLAGS --cache=true --cache-dir=/workspace --context=/workspace/source --dockerfile=/workspace/source/Dockerfile --destination=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION --cache-repo=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/cache
               command:
                 - /busybox/sh
                 - -c
