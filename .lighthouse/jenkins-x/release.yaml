@@ -265,7 +265,7 @@ spec:
               command:
                 - /bin/sh
                 - -c
-              image: gcr.io/jenkinsxio/builder-nodejs:2.1.150-769
+              image: gcr.io/jenkinsxio/builder-nodejs12x:latest
               name: build-npmrc
 
             - args:
@@ -273,7 +273,7 @@ spec:
               command:
                 - /bin/sh
                 - -c
-              image: gcr.io/jenkinsxio/builder-nodejs:2.1.150-769
+              image: gcr.io/jenkinsxio/builder-nodejs12x:latest
               name: build-npm-install
 
             - args:
@@ -281,7 +281,7 @@ spec:
               command:
                 - /bin/sh
                 - -c
-              image: gcr.io/jenkinsxio/builder-nodejs:2.1.150-769
+              image: gcr.io/jenkinsxio/builder-nodejs12x:latest
               name: build-npm-test
 
             - name: sonar

@@ -196,10 +196,10 @@ spec:
               image: gcr.io/jenkinsxio/jx-cli:latest
               script: git checkout $(cat target.branch)
             - name: pre-sonar-npm-install
-              image: gcr.io/jenkinsxio/builder-nodejs:2.1.150-769
+              image: gcr.io/jenkinsxio/builder-nodejs12x:latest
               script: npm install
             - name: pre-sonar-npm-test
-              image: gcr.io/jenkinsxio/builder-nodejs:2.1.150-769
+              image: gcr.io/jenkinsxio/builder-nodejs12x:latest
               script: npm run test
             - name: sonar
               image: sonarsource/sonar-scanner-cli:4.4
