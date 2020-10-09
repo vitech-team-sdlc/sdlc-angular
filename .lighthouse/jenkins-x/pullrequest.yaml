@@ -279,17 +279,25 @@ spec:
               name: build-npm-build-prod
 
             - args:
-                - echo $KANIKO_FLAGS && source .jx/variables.sh && /kaniko/executor $KANIKO_FLAGS --cache=true --cache-dir=/workspace --context=/workspace/source --dockerfile=/workspace/source/Dockerfile --destination=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION --cache-repo=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/cache
+                - docker build /workspace/source/ && docker images
               command:
-                - /busybox/sh
+                - /bin/bash
                 - -c
-              image: gcr.io/kaniko-project/executor:debug-v0.24.0
-              name: build-container-build
+              image: gcr.io/jenkinsxio/jx-cli:latest
+              name: promote-jx-preview
 
-            - name: snyk-container-test
-              image: "snyk/snyk:docker"
-              script: |
-                source /workspace/source/.jx/variables.sh && /usr/local/bin/docker-entrypoint.sh snyk container test $DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION
+#            - args:
+#                - echo $KANIKO_FLAGS && source .jx/variables.sh && /kaniko/executor $KANIKO_FLAGS --cache=true --cache-dir=/workspace --context=/workspace/source --dockerfile=/workspace/source/Dockerfile --destination=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION --cache-repo=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/cache
+#              command:
+#                - /busybox/sh
+#                - -c
+#              image: gcr.io/kaniko-project/executor:debug-v0.24.0
+#              name: build-container-build
+#
+#            - name: snyk-container-test
+#              image: "snyk/snyk:docker"
+#              script: |
+#                source /workspace/source/.jx/variables.sh && /usr/local/bin/docker-entrypoint.sh snyk container test $DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION
 
             - args:
                 - source /workspace/source/.jx/variables.sh && jx preview create
@@ -298,7 +306,16 @@ spec:
                 - -c
               image: gcr.io/jenkinsxio/jx-cli:latest
               name: promote-jx-preview
-
+          sidecars:
+            - image: docker:18.05-dind
+              name: server
+              securityContext:
+                privileged: true
+              volumeMounts:
+                - mountPath: /var/lib/docker
+                  name: dind-storage
+                - mountPath: /var/run/
+                  name: dind-socket
           volumes:
             - emptyDir: { }
               name: workspace-volume
@@ -308,6 +325,10 @@ spec:
                       fieldPath: metadata.labels
                     path: labels
               name: podinfo
+            - name: dind-storage
+              emptyDir: { }
+            - name: dind-socket
+              emptyDir: { }
   podTemplate:
     ImagePullSecrets: null
     hostNetwork: false
