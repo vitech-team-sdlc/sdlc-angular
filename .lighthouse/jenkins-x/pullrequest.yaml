@@ -291,7 +291,7 @@ spec:
               script: |
                 source /workspace/source/.jx/variables.sh && ls -la /var/run/docker.sock && /usr/local/bin/docker-entrypoint.sh snyk container test $DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION
               volumeMounts:
-                - name: docker-socket-example
+                - name: docker-socket
                   mountPath: /var/run/docker.sock
 
             - args:
@@ -311,6 +311,10 @@ spec:
                       fieldPath: metadata.labels
                     path: labels
               name: podinfo
+            - name: docker-socket
+              hostPath:
+                path: /var/run/docker.sock
+                type: Socket
   podTemplate:
     ImagePullSecrets: null
     hostNetwork: false
