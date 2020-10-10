@@ -284,6 +284,10 @@ spec:
               image: gcr.io/jenkinsxio/builder-nodejs12x:latest
               name: build-npm-test
 
+            - name: build-npm-prod
+              script: npm run build-prod
+              image: gcr.io/jenkinsxio/builder-nodejs12x:latest
+
             - name: sonar
               image: sonarsource/sonar-scanner-cli:4.4
               script: |
