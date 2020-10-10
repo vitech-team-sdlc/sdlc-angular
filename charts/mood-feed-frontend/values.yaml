@@ -12,7 +12,7 @@ jx:
   imagePullSecrets: []
 
 # define environment variables here as a map of key: value
-env:
+env: {}
 
 # enable this flag to use knative serve to deploy the app
 knativeDeploy: false
@@ -48,7 +48,7 @@ service:
   name: mood-feed-frontend
   type: ClusterIP
   externalPort: 80
-  internalPort: 8080
+  internalPort: 80
   annotations:
     fabric8.io/expose: "true"
     fabric8.io/ingress.annotations: "kubernetes.io/ingress.class: nginx"

@@ -8,6 +8,8 @@
     "build-prod": "ng build --prod",
     "test": "ng test --code-coverage=true --browsers=ChromeHeadlessNoSandbox --watch=false",
     "lint": "ng lint",
+    "snyk-monitor": "snyk monitor --project-name=$PULL_NUMBER",
+    "snyk-test": "snyk monitor --project-name=$PULL_NUMBER",
     "e2e": "ng e2e"
   },
   "private": true,
@@ -21,6 +23,7 @@
     "@angular/platform-browser-dynamic": "~10.0.3",
     "@angular/router": "~10.0.3",
     "rxjs": "~6.5.5",
+    "snyk": "^1.410.3",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
   },
