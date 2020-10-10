@@ -1,9 +1,14 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
+  creationTimestamp: null
   labels:
+    branch: master
+    build: "1"
     jenkins.io/pipelineType: build
-  name: jenkins-x-node
+    owner: jenkins-x-quickstarts
+    repository: node-http
+  name: jenkins-x-quickstarts-node-http-lzpkw-1
 spec:
   pipelineSpec:
     params:
