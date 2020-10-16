@@ -214,7 +214,7 @@ spec:
 
             - args:
                 - -c
-                - jx step next-version --filename package.json
+                - jx step next-version --semantic-release --filename package.json
               command:
                 - /bin/sh
               image: gcr.io/jenkinsxio/builder-go
