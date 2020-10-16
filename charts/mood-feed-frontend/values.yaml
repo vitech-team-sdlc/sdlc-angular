@@ -4,7 +4,7 @@
 replicaCount: 1
 image:
   repository: gcr.io/sdlc-286111/mood-feed-frontend
-  tag: 1.1.0
+  tag: 1.1.1
   pullPolicy: IfNotPresent
 
 # optional list of image pull secrets to use to pull images
