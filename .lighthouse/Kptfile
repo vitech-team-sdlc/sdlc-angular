@@ -5,7 +5,7 @@ metadata:
 upstream:
   type: git
   git:
-    commit: 8ddf2dd80e4f7c79e1d0974f2d7940d0dea15b76
+    commit: ae6bbac0988c6f85400a337350529d79b41b8bf3
     repo: https://github.com/vitech-team/tekton-pipelines-catalog
     directory: pipelineRuns/node/.lighthouse
     ref: master
