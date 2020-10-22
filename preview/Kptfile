@@ -9,4 +9,3 @@ upstream:
         repo: https://github.com/jenkins-x/jx3-gitops-template
         directory: /charts/preview
         ref: master
-
