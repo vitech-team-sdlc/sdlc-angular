@@ -16,7 +16,7 @@ spec:
         - ReadWriteOnce
         resources:
           requests:
-            storage: 800Mi
+            storage: 2Gi
   podTemplate:
     volumes:
     - name: podinfo
@@ -29,5 +29,5 @@ spec:
       hostPath:
         path: /var/run/docker.sock
         type: Socket
-  serviceAccountName: tekton-build-bot
+  serviceAccountName: tekton-bot
   timeout: 1h
