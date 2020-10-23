@@ -1,0 +1,11 @@
+apiVersion: kpt.dev/v1alpha1
+kind: Kptfile
+metadata:
+  name: .lighthouse
+upstream:
+  type: git
+  git:
+    commit: c0b17cc3f2af221b58a9a5fe0928ad7ce656f711
+    repo: https://github.com/vitech-team/tekton-pipelines-catalog
+    directory: /pipelineRuns/angular/.lighthouse
+    ref: master
