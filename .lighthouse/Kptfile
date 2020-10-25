@@ -5,7 +5,7 @@ metadata:
 upstream:
   type: git
   git:
-    commit: c0b17cc3f2af221b58a9a5fe0928ad7ce656f711
+    commit: 9b36a8c2db0a5c8d7a894c86b9ee5c435b24fd85
     repo: https://github.com/vitech-team/tekton-pipelines-catalog
     directory: /pipelineRuns/angular/.lighthouse
     ref: master
