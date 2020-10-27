@@ -5,7 +5,7 @@ repositories:
     url: http://chartmuseum-jx.35.195.151.253.nip.io/
 releases:
 - chart: dev/mood-feed-backend
-  version: 1.0.12
+  version: 1.0.37
   name: mood-feed-backend
   namespace: '{{ requiredEnv "PREVIEW_NAMESPACE" }}'
 - chart: stable/mysql
