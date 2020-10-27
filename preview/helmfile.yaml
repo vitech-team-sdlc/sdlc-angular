@@ -2,10 +2,9 @@ repositories:
   - name: stable
     url: https://kubernetes-charts.storage.googleapis.com
   - name: dev
-    url: http://chartmuseum-jx.35.184.28.81.nip.io/
+    url: http://chartmuseum-jx.35.195.151.253.nip.io/
 releases:
 - chart: dev/mood-feed-backend
-  version: 1.0.12
   name: mood-feed-backend
   namespace: '{{ requiredEnv "PREVIEW_NAMESPACE" }}'
 - chart: stable/mysql
