@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  name: jx-pullrequest
+  name: jx-sonar
   labels:
     jenkins.io/pipelineType: build
     owner: vitech-team
@@ -16,7 +16,7 @@ spec:
             - ReadWriteOnce
           resources:
             requests:
-              storage: 250Mi
+              storage: 2Gi
   podTemplate:
     volumes:
       - name: podinfo
