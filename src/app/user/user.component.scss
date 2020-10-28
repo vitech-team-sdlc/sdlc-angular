@@ -1,0 +1,26 @@
+.user-component {
+  display: flex;
+  justify-content: space-between;
+
+  .user {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+  }
+
+  .user-table {
+    display: table;
+    border-collapse: collapse;
+  }
+
+  .user-table-row {
+    display: table-row;
+    border: 1px solid #CCCCCC;
+  }
+
+  .user-table-row span {
+    display: table-cell;
+    padding: 10px;
+  }
+
+}

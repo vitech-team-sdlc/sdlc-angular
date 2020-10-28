@@ -22,12 +22,21 @@ describe('UserService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('#auth', () => {
-    service.auth().subscribe();
+  it('#current', () => {
+    service.current().subscribe();
 
-    const req = httpMock.expectOne(environment.baseUrl + '/users/auth');
+    const req = httpMock.expectOne(environment.baseUrl + '/users/current');
     expect(req.request.method).toEqual('GET');
     req.flush(new User());
+    httpMock.verify();
+  });
+
+  it('#userList', () => {
+    service.userList().subscribe();
+
+    const req = httpMock.expectOne(environment.baseUrl + '/users');
+    expect(req.request.method).toEqual('GET');
+    req.flush(Array.of(new User()));
     httpMock.verify();
   });
 

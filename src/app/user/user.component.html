@@ -1,0 +1,16 @@
+<div class="user-component">
+  <div class="logo">
+    <img src="assets/images/logo.svg" alt="Logo">
+  </div>
+  <div class="user">
+    <h1>User list</h1>
+    <div class="user-table">
+      <div *ngFor="let user of users" class="user-table-row">
+        <span>{{user.firstName}}</span>
+        <span>{{user.lastName}}</span>
+        <span>{{user.logoColor}}</span>
+      </div>
+    </div>
+  </div>
+  <app-user-menu></app-user-menu>
+</div>

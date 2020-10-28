@@ -4,7 +4,8 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {FeedModule} from './feed/feed.module';
-import {LoginModule} from './login/login.module';
+import {AuthConfigModule} from './auth/auth.config.module';
+import { UserModule } from './user/user.module';
 
 
 @NgModule({
@@ -13,9 +14,10 @@ import {LoginModule} from './login/login.module';
   ],
   imports: [
     BrowserModule,
-    LoginModule,
     FeedModule,
-    AppRoutingModule
+    UserModule,
+    AppRoutingModule,
+    AuthConfigModule
   ],
   bootstrap: [AppComponent]
 })

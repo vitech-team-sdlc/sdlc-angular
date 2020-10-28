@@ -1,0 +1,40 @@
+.user-menu-component {
+
+  display: block;
+  margin: 10px;
+  width: 100px;
+  position: fixed;
+  right: 0;
+  top: 0;
+
+  &:hover .user-menu-popup {
+    display: block;
+  }
+
+  .user-menu-popup {
+    display: none;
+    float: right;
+    width: 130px;
+    margin: 10px 0;
+    padding: 10px 0;
+    border-radius: 20px;
+  }
+
+  .user-menu-popup button {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    border: 0;
+    background-color: transparent;
+  }
+
+  .user-menu-popup button:hover {
+    color: white;
+  }
+
+  .user-logo {
+    float: right;
+  }
+
+}
