@@ -7,5 +7,5 @@ upstream:
   git:
     commit: 783c5386c56746e7d9c1340571196b6d3afcfdcb
     repo: https://github.com/vitech-team/tekton-pipelines-catalog
-    directory: /pipelineRuns/angular/.lighthouse
+    directory: /packs/angular/.lighthouse
     ref: master
