@@ -1,22 +1,23 @@
 import { AuthConfig } from 'angular-oauth2-oidc';
+import { environment } from '../../environments/environment';
 
 export const authConfig: AuthConfig = {
 
   // Url of the Identity Provider
-  issuer: 'http://localhost:8180/auth/realms/mood-feed',
+  issuer: 'http://keycloak.35.195.151.253.nip.io/auth/realms/mood-feed',
 
   // URL of the SPA to redirect the user to after login
   redirectUri: window.location.origin,
 
-  // The SPA's id.
-  // The SPA is registerd with this id at the auth-serverß
-  clientId: 'mood-feed-login',
+  // The SPA's id
+  // The SPA is registered with this id at the auth-server
+  clientId: environment.production ? 'mood-feed-staging' : 'mood-feed-local',
 
   responseType: 'code',
 
   // set the scope for the permissions the client should request
   // The first three are defined by OIDC.
-  scope: 'openid profile email messages',
+  scope: 'openid profile email',
 
   // Remove the requirement of using Https to simplify the demo
   // THIS SHOULD NOT BE USED IN PRODUCTION
