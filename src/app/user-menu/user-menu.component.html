@@ -1,0 +1,10 @@
+<div *ngIf="currentUser" class="user-menu-component">
+  <app-user-logo class="user-logo" [user]="currentUser"
+                 title="{{currentUser.firstName}} {{currentUser.lastName}}"></app-user-logo>
+  <div class="user-menu-popup" [ngStyle]="{'background': currentUser.logoColor}">
+    <button *ngIf="userInRole('ADMIN')" class="message-button" (click)="userMenuFeed()">feed</button>
+    <button *ngIf="userInRole('ADMIN')" class="message-button" (click)="userMenuUsers()">users</button>
+    <button class="message-button" (click)="userMenuProfile()">profile</button>
+    <button class="message-button" (click)="userMenuLogout()">logout</button>
+  </div>
+</div>

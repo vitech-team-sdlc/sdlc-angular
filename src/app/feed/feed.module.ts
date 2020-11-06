@@ -6,6 +6,8 @@ import {FeedComponent} from './feed.component';
 import {UserLogoModule} from '../user-logo/user-logo.module';
 import {FormsModule} from '@angular/forms';
 import {HashtagPipe} from './hashtag.pipe';
+import {UserMenuModule} from '../user-menu/user-menu.module';
+import {AuthConfigModule} from '../auth/auth.config.module';
 
 
 @NgModule({
@@ -13,6 +15,8 @@ import {HashtagPipe} from './hashtag.pipe';
   imports: [
     CommonModule,
     UserLogoModule,
+    UserMenuModule,
+    AuthConfigModule,
     FormsModule
   ]
 })
