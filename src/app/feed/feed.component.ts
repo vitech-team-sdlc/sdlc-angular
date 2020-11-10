@@ -20,7 +20,7 @@ export class FeedComponent implements OnInit {
 
   postMessage(message: string): void {
     this.authConfigService.loggedUser.subscribe((user: User) => {
-      this.messageService.postMessage(user.id, message).subscribe()
+      this.messageService.postMessage(user.id, message).subscribe();
     });
   }
 
