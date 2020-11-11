@@ -50,36 +50,6 @@ export class AuthConfigService {
     });
   }
 
-  async initAuth2(): Promise<any> {
-    return new Promise((resolveFn, rejectFn) => {
-      // setup oauthService
-      this.oauthService.configure(this.authConfig);
-      this.oauthService.setStorage(sessionStorage);
-      this.oauthService.tokenValidationHandler = new NullValidationHandler();
-
-      // subscribe to token events
-      this.oauthService.events
-        .pipe(filter((e: any) => {
-          return e.type === 'token_received';
-        }))
-        .subscribe(() => this.handleNewToken());
-
-      // continue initializing app or redirect to login-page
-      this.oauthService.loadDiscoveryDocumentAndLogin().then(isLoggedIn => {
-        if (isLoggedIn) {
-          this.oauthService.setupAutomaticSilentRefresh();
-          this.login();
-          resolveFn();
-        } else {
-          this.oauthService.initCodeFlow();
-          rejectFn();
-        }
-
-
-      });
-    });
-  }
-
   public hasRole(role): boolean {
     if (!this.identityClaims || this.identityClaims.getValue() === null) {
       return false;
