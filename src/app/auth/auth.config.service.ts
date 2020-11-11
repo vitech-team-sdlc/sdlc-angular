@@ -74,6 +74,7 @@ export class AuthConfigService {
           this.oauthService.initCodeFlow();
           rejectFn();
         }
+
       });
     });
   }
