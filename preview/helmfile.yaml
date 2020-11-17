@@ -11,6 +11,9 @@ releases:
 - chart: dev/mood-feed-backend
   name: mood-feed-backend
   namespace: '{{ requiredEnv "PREVIEW_NAMESPACE" }}'
+  values:
+    - backend-values.yaml
+    - imagePullSecrets.yaml
 - chart: stable/mysql
   version: 1.6.6
   name: mysql
