@@ -6,10 +6,11 @@ repositories:
   - name: stable
     url: https://charts.helm.sh/stable
   - name: dev
-    url: http://chartmuseum-jx.35.195.151.253.nip.io/
+    url: '{{ jxRequirements.cluster.chartRepository}}'
 releases:
 - chart: dev/mood-feed-backend
   name: mood-feed-backend
+  wait: true
   namespace: '{{ requiredEnv "PREVIEW_NAMESPACE" }}'
   values:
     - backend-values.yaml
