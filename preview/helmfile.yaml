@@ -6,7 +6,7 @@ repositories:
   - name: stable
     url: https://charts.helm.sh/stable
   - name: dev
-    url: '{{ jxRequirements.cluster.chartRepository}}'
+    url: '{{ .Values.jxRequirements.cluster.chartRepository }}'
 releases:
 - chart: dev/mood-feed-backend
   name: mood-feed-backend
