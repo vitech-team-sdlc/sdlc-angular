@@ -1,3 +1,7 @@
+environments:
+  default:
+    values:
+      - jx-values.yaml
 repositories:
   - name: stable
     url: https://charts.helm.sh/stable
@@ -12,13 +16,7 @@ releases:
   name: mysql
   namespace: '{{ requiredEnv "PREVIEW_NAMESPACE" }}'
   values:
-    - mysqlPassword: 123QWEasd
-    - mysqlDatabase: mood_feed
-    - mysqlUser: moodfeed
-    - mysqlRootPassword: 123QWEasd
-    - initializationFiles:
-        mood_feed_db.sql: |-
-          CREATE DATABASE IF NOT EXISTS mood_feed DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+    - mysql-values.yaml
 - chart: '../charts/{{ requiredEnv "APP_NAME" }}'
   name: preview
   wait: true
