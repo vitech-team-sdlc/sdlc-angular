@@ -1,5 +1,5 @@
 env:
-  "ALLOWED_ORIGINS": *
+  "ALLOWED_ORIGINS": "*"
 
 envFrom:
   - secretRef:
