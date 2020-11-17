@@ -4,14 +4,14 @@ import { environment } from '../../environments/environment';
 export const authConfig: AuthConfig = {
 
   // Url of the Identity Provider
-  issuer: 'http://keycloak.35.195.151.253.nip.io/auth/realms/mood-feed',
+  issuer: environment.authIssuer,
 
   // URL of the SPA to redirect the user to after login
   redirectUri: window.location.origin,
 
   // The SPA's id
   // The SPA is registered with this id at the auth-server
-  clientId: environment.production ? 'mood-feed-staging' : 'mood-feed-local',
+  clientId: environment.authClientId,
 
   responseType: 'code',
 

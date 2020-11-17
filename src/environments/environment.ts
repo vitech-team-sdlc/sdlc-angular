@@ -4,7 +4,9 @@
 
 export const environment = {
   baseUrl: 'http://localhost:8080',
-  production: false
+  production: false,
+  authIssuer: 'http://keycloak.35.195.151.253.nip.io/auth/realms/sdlc',
+  authClientId: "local"
 };
 
 /*
