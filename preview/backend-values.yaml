@@ -1,7 +1,0 @@
-env:
-  "ALLOWED_ORIGINS": "*"
-
-envFrom:
-  - secretRef:
-      name: mysql
-      optional: false
